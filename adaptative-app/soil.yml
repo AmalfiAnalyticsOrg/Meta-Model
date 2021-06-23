@@ -1,0 +1,32 @@
+# Defines scripts that will be executed on a schedule
+# Check here to set the schedule https://crontab.guru/
+setup:
+    - reset-dbs:
+        path: adaptative.setup.reset_dbs
+
+data:
+    - new-data:
+        path: adaptative.new_data.new_data
+        params:
+            schema-file: config/schema.json
+
+schedules:
+    - train:
+        path: adaptative.scheduler.train # product.schedules.train
+        schedule: ""  # Laura Codification
+
+    - predict:
+        path:  adaptative.scheduler.predict # product.schedules.predict
+        schedule: ""  # Laura Codification
+        params:
+            unlabeled-data-file: data/unknown.csv
+    
+    - incremental-train:
+        path: adaptative.scheduler.incremental_train
+        schedule: ""  # Laura Codification
+    
+    - evaluate-model:
+        path: adaptative.scheduler.evaluate_model
+        schedule: ""  # Laura Codification
+
+# soil run schedules train
