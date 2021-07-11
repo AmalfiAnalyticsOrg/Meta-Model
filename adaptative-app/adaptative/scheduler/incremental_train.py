@@ -1,3 +1,4 @@
+''' Module to perform an incemental train to a predictor. '''
 from soil import logger
 import soil
 from soil.modules.retraining import retraining, getWorst, removeModel, addModel, getOlder, getting_ids, taking_small

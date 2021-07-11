@@ -23,8 +23,6 @@ def retraining(data, model, adaptation_fun=None):
 
     to_consider = np.zeros(len(small_models.data))
     for i, model in enumerate(small_models.data):
-        # KickOut ha de ser adaptation function no un string amb ifs
-        # Menyeee!
         if adaptation_fun == 'KickOutOlder':
             to_consider[i] = model.metadata['time']
         elif adaptation_fun == 'KickOutWorst':
@@ -87,18 +85,10 @@ def removeModel(models, worst_id=None):
     remove_id = worst_id['id']
     logger.info(remove_id)
     new_metamodel = []
-    # for i, model in enumerate(models):
-    #     # Aqui hi ha un problema logic amb aixo dels ids.   
-    #     # No troba cap amb aquell id. Weird eh!
-    #     if i != 0:
-    #         new_metamodel.append(model)
-
     logger.info('len(models)')
     logger.info(len(models))
 
     for model in models:
-        # Aqui hi ha un problema logic amb aixo dels ids.   
-        # No troba cap amb aquell id. Weird eh!
         if model.metadata['id'] != remove_id:
             new_metamodel.append(model)
 
@@ -145,7 +135,6 @@ def getWorst(models):
         'model_hyperparameters': hyper,
         'constructor': cons
     }
-    # new_worst_metadata = {}
     return [MetaModel([], new_worst_metadata)]
 
 

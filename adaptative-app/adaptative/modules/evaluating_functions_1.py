@@ -1,12 +1,8 @@
 ''' Module to evaluate a predictor. '''
-# from soil.modules.retrain_predictor import retrain_predictor
-# from soil.modules.make_predictions import make_predictions
 from soil.data_structures.es_data_structure import ESDataStructure
-# from soil.modules.generate_data_for_training import generate_data_for_training
 import pandas as pd
 from soil import modulify
 from soil import logger
-# import copy
 
 
 def filterKeys(document, use_these_keys):

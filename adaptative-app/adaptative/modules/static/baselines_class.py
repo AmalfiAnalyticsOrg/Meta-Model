@@ -8,8 +8,8 @@ class Mean_baseline:
     Arguments:
         - data
         - metadata: dictionary which saves:
-                        - what granularity I want to use to train the model, it can only
-                            contain hour, day_of_week, month. 
+                - what granularity I want to use to train the model, it can only
+                    contain hour, day_of_week, month. 
     """
     def __init__(self, metadata):
         # self.data = data

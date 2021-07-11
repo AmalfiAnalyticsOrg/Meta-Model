@@ -1,10 +1,9 @@
-''' Module to train a predictor. '''
+''' Module to evaluate predictionss. '''
 import argparse
 import logging
 import soil
 import numpy as np
-# from soil.modules.retrain_predictor import retrain_predictor
-# from soil.modules.make_predictions import make_predictions
+
 from soil.data_structures.es_data_structure import ESDataStructure
 from soil.modules.generate_data_for_training import generate_data_for_training
 import pandas as pd

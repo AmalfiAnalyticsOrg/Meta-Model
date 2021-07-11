@@ -1,3 +1,4 @@
+''' Module to train a predictor. '''
 import logging
 from soil.modules.static.train_base_models import train_base_models
 

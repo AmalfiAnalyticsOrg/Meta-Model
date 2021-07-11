@@ -3,7 +3,6 @@ import pandas as pd
 
 from skmultiflow.trees.hoeffding_tree import HoeffdingTree
 from skmultiflow.trees import HoeffdingTreeClassifier
-# from soil.data_structures.sklearn_data_structure import SKLearnDataStructure, Model_DT, Model_RF
 from soil.data_structures.sklearn_data_structure import SKLearnDataStructure
 from soil.modules.trainable import trainable
 from soil import modulify

@@ -53,10 +53,6 @@ class MetaModel(Model):
         ''' Function to deserialize '''
         return MetaModel(pickle.loads(serialized), metadata)
 
-    # def serialize(self):
-    #     for value in self.data:
-    #         pickle.dump(value)
-
     def get_data(self, **_args):
         # pylint: disable=no-self-use
         ''' Placeholder function for the API call '''

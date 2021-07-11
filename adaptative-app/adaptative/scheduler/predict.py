@@ -1,11 +1,9 @@
-''' Module to train a predictor. '''
+''' Module to predict with a trained predictor. '''
 import argparse
 import logging
 import soil
 from soil import logger
-# import pandas as pd
 from soil.modules.make_predictions import make_predictions
-# from soil.modules.to_es_data_structure import to_es_data_structure
 import pandas as pd
 # from soil.modules.prediction_functions.prediction_function_weighted_majority import weighted_majority
 
@@ -52,8 +50,6 @@ def main():
         help='Pass unlabeled data here', required=True
     )
     args = parser.parse_args()
-    # preds_params = {'method': weighted_majority}
-    # get_predictions(preds_params, **vars(args))
     get_predictions(**vars(args))
 
 
