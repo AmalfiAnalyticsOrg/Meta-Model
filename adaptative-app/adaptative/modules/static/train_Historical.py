@@ -27,7 +27,6 @@ def train_Historical(data, model_params=None, **train_params):
     x = df[x_labels]
     y = df[y_labels].values.ravel()
 
-    # TO DO
     model = []
 
     accuracy = cross_val_score(model, x, y, cv=10)

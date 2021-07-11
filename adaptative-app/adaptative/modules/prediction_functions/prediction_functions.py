@@ -17,7 +17,6 @@ def weighted_majority_bin(trained_models, *data_inputs, **train_params):
         data = data_inputs[0].data
 
     for row in data:
-        # predictions = x prediction for each predictor --> a row? how we store it?
         predictions = []
         p = np.dot(w, predictions)
         y_hat = np.sign(p - train_params['threshold'])
@@ -29,58 +28,6 @@ def weighted_majority_bin(trained_models, *data_inputs, **train_params):
         w = [w[i]/s for i in range(len(trained_models))]
 
     return w
-
-
-# def weighted_majority(d_y):
-#     '''
-#     Weighted majority for classifiers
-#     '''
-#     w = 1/len(trained_models) * np.ones(len(trained_models))
-
-#     # This is here to prevent a weird bug.
-#     if data_inputs[0].data is not None:
-#         data = data_inputs[0].data
-
-#     for row in data:
-#         # predictions = x prediction for each predictor --> a row? how we store it?
-#         predictions = []
-#         p = np.dot(w, predictions)
-#         y_hat = np.sign(p - train_params['threshold'])
-#         row['mm'] = y_hat
-#         for i in range(len(trained_models)):
-#             if predictions[i] != row['y']:  # row[y], y true for the observation x
-#                 w[i] = train_params['beta'] * w[i]
-#         s = np.sum(w)
-#         w = [w[i]/s for i in range(len(trained_models))]
-
-#     return w
-
-
-# def weighted_majority(d_y):
-#     '''
-#     Weighted majority for classifiers
-#     d_y vector with the following specifications:
-#         - length = # of classifiers used in the metamodel
-#         - for each classifier:
-#             - position 0 contains an array with the predictions
-#             - position 1 contains the weight of the classifier
-#     '''
-
-#     preds = []
-
-#     # For each prediction
-#     for i in range(len(d_y[0][0])):
-#         predictions = [d_y[j][0][i] for j in range(len(d_y))]
-#         freqs = Counter(predictions)  # dictionary key = predicted class, value = frequency
-#         freqs2 = {k: 0 for k in freqs.keys()}
-#         for j in range(len(d_y)):
-#             freqs2[d_y[j][0][i]] += freqs[d_y[j][0][i]] * d_y[j][1]
-#         # We take the key with the maximum value
-#         pred = max(dict.items(), key=lambda x: x[1])[0]
-
-#         preds.append(pred)
-
-#     return preds
 
 
 def weighted_majority(Y, weight):

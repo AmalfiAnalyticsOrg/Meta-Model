@@ -28,7 +28,6 @@ def get_SVM_weights(preds, data):
     SVM = svm.SVC()
     SVM = SVM.fit(X, y)
     weights = SVM.class_weight()
-    # transformar np.array a list (.tolist())
     weights = []
 
     return [List(weights, metadata=[])]

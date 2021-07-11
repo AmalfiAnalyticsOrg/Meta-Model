@@ -9,53 +9,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 import time
 
-# from soil.data_structures.predefined.list import List
-
-
-# @modulify(output_types=lambda *input_types, **args: [MetaModel])
-# def retraining(data, model, adaptation_fun=None):
-#     logger.info('Ready to retrain')
-
-#     cons = {
-#         # 'RandomForestClassifier': RandomForestClassifier,
-#         'RandomForestClassifier': RandomForestClassifier,
-#         'DecisionTreeClassifier': DecisionTreeClassifier
-#     }
-#     logger.info('HERE!')
-#     if model.data is not None:
-#         small_models = model.data
-    
-#     logger.info('small_models')
-#     logger.info(small_models.data)
-
-#     to_consider = np.zeros(len(small_models.data))
-#     for i, model in enumerate(small_models.data):
-#         # KickOut ha de ser adaptation function no un string amb ifs
-#         if adaptation_fun == 'KickOutOlder':
-#             to_consider[i] = model.metadata['time']
-#         elif adaptation_fun == 'KickOutWorst':
-#             to_consider[i] = model.metadata['accuracy']
-
-#     older = np.argmin(to_consider)
-#     # Guardar a metadata el constructor + hyperparams si vull mantenir mateixa policy
-#     # depèn del q vulgui mantinc freq. de models simples o no
-#     if model.metadata['model_type'] == 'sklearn':
-
-#         logger.info('model.metadata[constructor]')
-#         logger.info(model.metadata['constructor'])
-
-#         constructor = cons[str(model.metadata['constructor'])]
-#         logger.info(constructor)
-#         hyperparams = model.metadata['model_hyperparameters']
-#         logger.info('hyperparams')
-#         logger.info(hyperparams)
-#         hyperparams = {'n_estimators': 12}
-#         mod = train_SKLearn(constructor=RandomForestClassifier, model_params={})()(data)
-#         small_models[older] = train_SKLearn(constructor=RandomForestClassifier, model_params={})()(data)
-
-#     metadata = {}
-#     return [MetaModel(small_models, metadata)]
-
 
 @modulify(output_types=lambda *input_types, **args: [MetaModel])
 def retraining(data, model, adaptation_fun=None):
@@ -77,15 +30,6 @@ def retraining(data, model, adaptation_fun=None):
         elif adaptation_fun == 'KickOutWorst':
             to_consider[i] = model.metadata['accuracy']
 
-    # older = np.argmin(to_consider)
-
-    # logger.info('small_models[older]')
-    # logger.info(small_models.data[older])
-
-    # if small_models.data[older].metadata['model_type'] == 'sklearn':
-    #     sklearn = True
-    # else:
-    #     sklearn = False
 
     constructor = small_models.data[older].metadata['constructor']
     model_params = small_models.data[older].metadata['model_hyperparameters']

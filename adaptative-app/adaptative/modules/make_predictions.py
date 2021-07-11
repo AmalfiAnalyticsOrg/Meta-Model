@@ -24,8 +24,6 @@ def make_predictions(models, data):
     if models.data is not None:
         models = models.data
 
-    # logger.info(len(models))
-
     df = pd.DataFrame(data)
 
     if models_metadata['model_type'] == 'sklearn':
