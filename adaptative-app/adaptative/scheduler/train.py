@@ -9,8 +9,7 @@ from skmultiflow.trees import HoeffdingTreeClassifier
 from soil.modules.static.train_MM import assembling, training
 from soil.modules.static.MM_methods import SVM_weights, accuracy_weights
 import soil
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
+import time
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -30,7 +29,7 @@ def main():
                      (DecisionTreeClassifier, {}),
                      (LinearDiscriminantAnalysis, {}),
                      (HoeffdingTreeClassifier, {})]
-
+   
     # Instancing each base model
     print("Building the models...")
     models = list([train_base_models(constructor=constructor, model_params=model_params, **{'id': i})
@@ -48,6 +47,9 @@ def main():
 
     # Saving the predictor with an alias to SOIL
     soil.alias('laura_pred', predictor_ref)
+
+    # Just for testing purposes
+    # return predictor_ref.metadata['trained']
 
 
 if __name__ == '__main__':

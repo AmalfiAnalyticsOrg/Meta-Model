@@ -12,6 +12,7 @@ from sklearn.model_selection import cross_val_score
 from time import sleep
 import copy
 from sklearn.preprocessing import LabelEncoder
+import time
 
 
 @trainable
